@@ -16,9 +16,11 @@ class Solution(object):
         :rtype: List[str]
         """
         ret = []
-        return self.dfs(digits, ret)
+        bfs = self.bfs(digits, [])
+        self.dfs(digits, "", ret)
+        return dfs
 
-    def dfs(self, digits, res):
+    def bfs(self, digits, res):
         if not digits:
             return res
         num = digits[0]
@@ -31,6 +33,13 @@ class Solution(object):
             for c in str:
                 tep.append(r + c)
         return self.dfs(digits[1:], tep)
+
+    def dfs(self, digits, current, result):
+        if not digits:
+            result.append(current)
+            return
+        for c in self.digit2letters[digits[0]]:
+            self.dfs(digits[1:], current + c, result)
 
 
 print Solution().letterCombinations('23')
