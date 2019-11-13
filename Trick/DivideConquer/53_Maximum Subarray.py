@@ -19,7 +19,7 @@ class Solution:
         midMax = self.findCross(start, end)
         return max(leftMax, rightMax, midMax)
 
-# Max subarray cross the middle element
+    # Max subarray cross the middle element
     def findCross(self, start, end):
         if start == end - 1 or start == end:
             return self.nums[start]
@@ -33,7 +33,7 @@ class Solution:
                 ret = current
         current = ret
         for i in range(mid - 1, start - 1, -1):
-            current+=self.nums[i]
+            current += self.nums[i]
             if current > ret:
                 ret = current
         return ret

@@ -9,7 +9,7 @@ class Solution(object):
         while left <= right:
             mid = (left + right) // 2
             if nums[mid] == target:
-                return mid
+                return True
             if nums[left] < nums[mid]:
                 if target > nums[mid] or target < nums[left]:
                     left = mid + 1
@@ -22,7 +22,7 @@ class Solution(object):
                     left = mid + 1
             else:
                 left += 1
-        return -1
+        return False
 
 
-print Solution().search([4, 5, 6, 7, 8, 1, 2, 3], 8)
+print Solution().search([3, 3, 3, 3, 3, 0, 3], 0)
