@@ -1,8 +1,10 @@
 class Solution:
-    def __init__(self):
-        nums = []
-
     def maxSubArray(self, nums):
+        dp = [i for i in nums]
+        for i in range(1, len(nums)):
+            dp[i] = max(nums[i], nums[i] + dp[i - 1])
+        return max(dp)
+    def maxSubArray1(self, nums):
         """
         :type nums: List[int]
         :rtype: int
@@ -39,4 +41,4 @@ class Solution:
         return ret
 
 
-print Solution().maxSubArray([1, 3, -1, 2, 0, -2, 2])
+print Solution().maxSubArray([-2,1,-3,4,-1,2,1,-5,4])
