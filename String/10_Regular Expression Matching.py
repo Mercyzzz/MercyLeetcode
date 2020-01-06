@@ -1,5 +1,5 @@
 class Solution(object):
-    def isMatch(self, text, pattern):
+    def isMatch1(self, text, pattern):
         dp = [[False] * (len(pattern) + 1) for _ in range(len(text) + 1)]
 
         dp[-1][-1] = True
@@ -20,9 +20,9 @@ class Solution(object):
         first_match = bool(text) and pattern[0] in {text[0], '.'}
 
         if len(pattern) >= 2 and pattern[1] == '*':
-            return (self.isMatch(text, pattern[2:]) or first_match and self.isMatch(text[1:], pattern))
+            return self.isMatch(text, pattern[2:]) or (first_match and self.isMatch(text[1:], pattern))
         else:
             return first_match and self.isMatch(text[1:], pattern[1:])
 
 
-print Solution().isMatch('aa', "a*")
+#print Solution().isMatch('aa', "a*")

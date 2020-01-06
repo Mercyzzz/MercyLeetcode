@@ -32,7 +32,6 @@ class Solution(object):
                 tmp.next = l2
                 l2 = l2.next
             tmp = tmp.next
-        print l1 or l2
         if l1:
             tmp.next = l1
         else:

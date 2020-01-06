@@ -13,7 +13,6 @@ class Solution(object):
         :rtype: ListNode
         """
         placeholder = 0
-        ret = 0
         pos = 0
         retHead = ListNode(-1)
         dummy = retHead
@@ -49,10 +48,10 @@ l3 = ListNode(3)
 r1 = ListNode(5)
 r2 = ListNode(6)
 r3 = ListNode(4)
-#l1.next = l2
-#l2.next = l3
-#r1.next = r2
-ret =  Solution().addTwoNumbers(l1, r1)
+l1.next = l2
+l2.next = l3
+r1.next = r2
+ret = Solution().addTwoNumbers(l1, r1)
 while ret:
     print ret.val
     ret = ret.next

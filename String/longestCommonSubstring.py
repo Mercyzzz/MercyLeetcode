@@ -16,4 +16,4 @@ class Solution(object):
                 maxL = max(maxL, dp[i][j])
         return maxL
 
-print Solution().longestCommonSubstring('abc','abc')
+print Solution().longestCommonSubstring('abcc','abcd')

@@ -1,13 +1,23 @@
 class Solution(object):
-    # greedy
     def canJump(self, nums):
+        far = 0
+        for i in range(len(nums) - 1):
+            if nums[i] + i > far:
+                far = nums[i] + i
+            if far == i:
+                return False
+        return True
+
+    # greedy
+    def canJumpTopToBot(self, nums):
         lastPos = len(nums) - 1
         for i in range(len(nums) - 2, -1, -1):
             if i + nums[i] >= lastPos:
                 lastPos = i
         return True if lastPos == 0 else False
 
-    # dp
+    #dp
+    '''
     def canJumpDp(self, nums):
         """
         :type nums: List[int]
@@ -21,6 +31,7 @@ class Solution(object):
             if dp[i] == 0:
                 return False
         return True
+    '''
 
 
 print Solution().canJump([0])
