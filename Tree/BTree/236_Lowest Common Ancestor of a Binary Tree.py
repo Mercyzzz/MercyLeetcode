@@ -7,11 +7,6 @@ class TreeNode(object):
 
 
 class Solution(object):
-
-    def __init__(self):
-        # Variable to store LCA node.
-        self.ans = None
-
     'iter'
     def lowestCommonAncestorIter(self, root, p, q):
         """
@@ -39,24 +34,24 @@ class Solution(object):
         return q
 
     "rec/ Non stack"
-    def lowestCommonAncestorRcr(self, root, p, q):
+    def lowestCommonAncestor(self, root, p, q):
         """
         :type root: TreeNode
         :type p: TreeNode
         :type q: TreeNode
         :rtype: TreeNode
         """
-        def recurse_tree(current_node):
-            if not current_node:
-                return False
-            mid = current_node == p or current_node == q
-            left = recurse_tree(current_node.left)
-            right = recurse_tree(current_node.right)
-            if mid + left + right >= 2:
-                self.ans = current_node
-            return mid or left or right
-        recurse_tree(root)
-        return self.ans
+        if not root or root == p or root == q:
+            return root
+        left = self.lowestCommonAncestor(root.left, p, q)
+        right = self. lowestCommonAncestor(root.right, p, q)
+        if not right:
+            return left
+        elif not left:
+            return right
+        else:
+            return root
+
 
 
     "stack rec"
@@ -108,4 +103,4 @@ n3.left = n6
 n3.right = n7
 n5.left = n8
 n5.right = n9
-print Solution().lowestCommonAncestorRcrStack(n1, n9, n3).val
+print Solution().lowestCommonAncestorRcrStack(n1, n4, n9).val

@@ -15,7 +15,6 @@ class Solution(object):
                     sumsIndexes[nums[i] + nums[j]].append((i, j))
                 else:
                     sumsIndexes[nums[i] + nums[j]] = [(i, j)]
-
         for i in range(len(nums)):
             for j in range(i + 1, len(nums)):
                 sumNeeded = target - (nums[i] + nums[j])

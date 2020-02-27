@@ -4,7 +4,10 @@ class Solution(object):
         :type prices: List[int]
         :rtype: int
         """
+        if not prices:
+            return 0
         dp = [0] * len(prices)
+
         minPrice = prices[0]
         for i in range(1, len(prices)):
             dp[i] = max(dp[i - 1], prices[i] - minPrice)

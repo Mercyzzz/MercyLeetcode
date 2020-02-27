@@ -6,7 +6,6 @@ class Solution(object):
         :type wordList: List[str]
         :rtype: int
         """
-        wordList.add(endWord)
         cur_level, next_level, depth = [beginWord], [], 1
         n = len(beginWord)
         while cur_level:
@@ -23,3 +22,6 @@ class Solution(object):
             cur_level = next_level
             next_level = []
         return 0
+
+
+print Solution().ladderLength('hit', 'cog', ["hot", "dot", "dog", "lot", "log", "cog"])

@@ -1,16 +1,16 @@
 class Solution(object):
-    def searchMatrix(self, matrix, target):
+    def searchMatrix(self, array, target):
         """
-        :type matrix: List[List[int]]
+        :type array: List[List[int]]
         :type target: int
         :rtype: bool
         """
-        x = len(matrix) - 1
+        x = len(array) - 1
         y = 0
-        while y < len(matrix[0]) and x >= 0:
-            if target > matrix[x][y]:
+        while y < len(array[0]) and x >= 0:
+            if target > array[x][y]:
                 y += 1
-            elif target < matrix[x][y]:
+            elif target < array[x][y]:
                 x -= 1
             else:
                 return True

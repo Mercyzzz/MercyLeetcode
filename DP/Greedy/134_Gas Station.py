@@ -13,3 +13,5 @@ class Solution(object):
                 start = i + 1
                 curSum = 0
         return -1 if total < 0 else start
+
+print Solution().canCompleteCircuit([1, 2, 3, 4, 5], [3, 4, 5, 1, 2])

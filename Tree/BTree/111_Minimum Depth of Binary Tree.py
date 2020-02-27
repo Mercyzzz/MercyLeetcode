@@ -23,5 +23,13 @@ class Solution(object):
             else:
                 return 1 + min(self.minDepth(root.left), self.minDepth(root.right))
 
-
-print self.minDepth()
+root = TreeNode(3)
+n1 = TreeNode(9)
+n2 = TreeNode(20)
+n3 = TreeNode(15)
+n4 = TreeNode(7)
+root.left = n1
+n1.left = n2
+n2.left = n3
+n3.left = n4
+print Solution().minDepth(root)

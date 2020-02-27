@@ -14,29 +14,48 @@ class Solution(object):
         head.next = None
         return newHead
 
-    def reverseListIte(self, head):
+    def reverseListInPlace(self, head):
         """
         :type head: ListNode
         :rtype: ListNode
         """
         if not head or not head.next:
             return head
-        pre, cur = head, head.next
-        pre.next = None
+        dummy = ListNode(-1)
+        dummy.next = head
+        cur, next = head, head.next
+        while next:
+            cur.next = next.next
+            next.next = dummy.next
+            dummy.next = next
+            next = cur.next
+        return dummy.next
+
+    def reverseHead(self, head):
+        dummy = ListNode(-1)
+        cur = head
         while cur:
             next = cur.next
-            cur.next = pre
-            pre = cur
+            cur.next = dummy.next
+            dummy.next = cur
             cur = next
-        return pre
+        return dummy.next
 
+        # while cur:
+        #     prev.next = cur.next
+        #     cur.next = dummy.next
+        #     dummy.next = cur
+        #     cur = prev.next
+        return dummy.next
 a = ListNode(1)
 b = ListNode(2)
 c = ListNode(3)
+d = ListNode(4)
 a.next = b
 b.next = c
+c.next = d
 
-a = Solution().reverseList(a)
+a = Solution().reverseIter(a)
 
 while a:
     print a.val

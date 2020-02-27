@@ -24,6 +24,23 @@ class Solution(object):
         return dummy.next
 
 
+
+
+
+
+
+
+        # cur = dummy
+        # while cur.next and cur.next.next:
+        #     pre = cur.next
+        #     post = cur.next.next
+        #     cur.next = post
+        #     pre.next = post.next
+        #     post.next = pre
+        #     cur = pre
+        # return dummy.next
+
+
 n1 = ListNode(1)
 n2 = ListNode(2)
 n3 = ListNode(3)

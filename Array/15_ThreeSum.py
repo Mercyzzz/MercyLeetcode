@@ -8,7 +8,7 @@ class Solution:
             idxDict[num] = idx
         return idx_list
 
-    def threeSum(self, num):
+    def threeSum1(self, num):
         num.sort()
         res = set()
         result = []
@@ -22,5 +22,20 @@ class Solution:
         for value in res:
             result.append(value)
         return result
+
+    def threeSum(self, nums):
+        nums.sort()
+        res = set()
+        for i, v in enumerate(nums[:-2]):
+            if i >= 1 and v == nums[i - 1]:
+                continue
+            d = {}
+            for x in nums[i + 1:]:
+                if x not in d:
+                    d[-v - x] = 1
+                else:
+                    res.add((v, -v - x, x))
+        return map(list, res)
+
 
 print Solution().threeSum([-1, 0, 1, 2, -1, -4])

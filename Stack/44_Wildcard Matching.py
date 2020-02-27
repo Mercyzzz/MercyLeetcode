@@ -52,6 +52,7 @@ class Solution(object):
                     dp[i][j] = dp[i][j - 1] or dp[i - 1][j]
                 else:
                     dp[i][j] = p[j - 1] in [s[i - 1], '?'] and dp[i - 1][j - 1]
+        print dp
         return dp[-1][-1]
 
-print Solution().isMatch('adceb', 'a*c*b')
+print Solution().isMatchDp('adceb', '**c*b')

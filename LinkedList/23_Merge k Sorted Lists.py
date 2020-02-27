@@ -28,12 +28,11 @@ class Solution(object):
         pt = dummy
         while l1 and l2:
             if l1.val <= l2.val:
-                tep = ListNode(l1.val)
+                pt.next = l1
                 l1 = l1.next
             else:
-                tep = ListNode(l2.val)
+                pt.next = l2
                 l2 = l2.next
-            pt.next = tep
             pt = pt.next
         if l1:
             pt.next = l1

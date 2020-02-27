@@ -62,5 +62,6 @@ def treeNodeArrayToString(treeNodeArray):
 
 n = 3
 ret = Solution().generateTrees(n)
+print ret
 out = treeNodeArrayToString(ret)
 print out

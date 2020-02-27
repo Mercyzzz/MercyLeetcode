@@ -5,12 +5,13 @@ class Solution(object):
         dp[-1][-1] = True
         for i in range(len(text), -1, -1):
             for j in range(len(pattern) - 1, -1, -1):
+                print i, j
                 first_match = i < len(text) and pattern[j] in {text[i], '.'}
                 if j + 1 < len(pattern) and pattern[j + 1] == '*':
                     dp[i][j] = first_match and dp[i + 1][j] or dp[i][j + 2]
                 else:
                     dp[i][j] = first_match and dp[i + 1][j + 1]
-
+        print dp
         return dp[0][0]
 
     def isMatchRec(self, text, pattern):
@@ -25,4 +26,6 @@ class Solution(object):
             return first_match and self.isMatch(text[1:], pattern[1:])
 
 
-#print Solution().isMatch('aa', "a*")
+print Solution().isMatch1('aa', "a*")
+
+print 1 or 1 and 0

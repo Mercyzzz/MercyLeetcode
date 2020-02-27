@@ -2,6 +2,10 @@ class Solution:
     # @param n, an integer
     # @return an integer
     def reverseBits(self, n):
-        print n
+        res = 0
+        for i in range(32):
+            res = (res << 1) + (n & 1)
+            n = n >> 1
+        return res
 
-print Solution().reverseBits(bin(00000010100101000001111010011100))
+print Solution().reverseBits(4)

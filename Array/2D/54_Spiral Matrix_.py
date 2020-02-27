@@ -4,10 +4,31 @@ class Solution(object):
         :type matrix: List[List[int]]
         :rtype: List[int]
         """
-        r1, r2, c1, c2 = 0, len(matrix) - 1, 0, len(matrix[0] - 1)
+        if matrix == [] : return []
         res = []
-        while r1 < r2 and c1 < c2:
-            for i in range(c1, c2):
-                res.append(matrix[r1][i])
-            for i in range(r1, r2):
-                res.append(matrix[i][c2])
+        maxUp = maxLeft = 0
+        maxDown = len(matrix) - 1
+        maxRight = len(matrix[0]) - 1
+        direction = 0 # 0 go right, 1 go down, 2 go left, 3 up
+        while True:
+            if direction == 0: #go right
+                for i in range(maxLeft, maxRight+1):
+                    res.append(matrix[maxUp][i])
+                maxUp += 1
+            elif direction == 1: # go down
+                for i in range(maxUp, maxDown+1):
+                    res.append(matrix[i][maxRight])
+                maxRight -= 1
+            elif direction == 2: # go left
+                for i in reversed(range(maxLeft, maxRight+1)):
+                    res.append(matrix[maxDown][i])
+                maxDown -= 1
+            else: #go up
+                for i in reversed(range(maxUp, maxDown+1)):
+                    res.append(matrix[i][maxLeft])
+                maxLeft +=1
+            if maxUp > maxDown or maxLeft > maxRight:
+                return res
+            direction = (direction + 1 ) % 4
+
+print Solution().spiralOrder([[1,2,3],[4,5,6],[7,8,9]])

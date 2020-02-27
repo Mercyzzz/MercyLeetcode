@@ -35,4 +35,4 @@ class Solution(object):
             right += 1
         return "" if minLength == float('inf') else s[minLeft:minRight + 1]
 
-print Solution().minWindow('a', 'aa')
+print Solution().minWindow('aaaaa', 'aa')

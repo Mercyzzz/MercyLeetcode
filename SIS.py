@@ -1,14 +1,22 @@
+from collections import deque
 class Solution(object):
-    def reverseString(self, s):
+    def maxSlidingWindow(self, nums, k):
         """
-        :type s: List[str]
-        :rtype: None Do not return anything, modify s in-place instead.
+        :type nums: List[int]
+        :type k: int
+        :rtype: List[int]
         """
-        back = len(s) - 1
-        for i in range(len(s)/2):
-            s[i], s[back] = s[back], s[i]
-            back -= 1
+        dq = deque()
+        res = []
+        for i in range(len(nums)):
+            while dq and nums[i] >= nums[dq[-1]]:
+                dq.pop()
+            dq.append(i)
+            if dq[0] <= i - k:
+                dq.popleft()
+            if i + 1 >= k:
+                res.append(nums[dq[0]])
 
-a = ["1"]
-Solution().reverseString(a)
-print a
+        return res
+
+print Solution().maxSlidingWindow([1,3,-1,-3,5,3,6,7], 3)

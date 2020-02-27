@@ -1,5 +1,5 @@
 class Solution(object):
-    def lengthOfLIS(self, nums):
+    def lengthOfLIS1(self, nums):
         dp = []
         for i in range(len(nums)):
             left, right = 0, len(dp)
@@ -14,17 +14,17 @@ class Solution(object):
             else:
                 dp[right] = nums[i]
         return len(dp)
-    # def lengthOfLIS(self, nums):
-    #     """
-    #     :type nums: List[int]
-    #     :rtype: int
-    #     """
-    #     dp = [1 for i in nums]
-    #     for i in range(len(nums)):
-    #         for j in range(0, i):
-    #             if nums[i] > nums[j]:
-    #                 dp[i] = max(dp[i], dp[j] + 1)
-    #     return max(dp)
+    def lengthOfLIS(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        dp = [1 for i in nums]
+        for i in range(len(nums)):
+            for j in range(0, i):
+                if nums[i] > nums[j]:
+                    dp[i] = max(dp[i], dp[j] + 1)
+        return max(dp)
 
 
-print Solution().lengthOfLIS([10, 9, 2, 5, 3, 7, 101, 18, 9])
+print Solution().lengthOfLIS([10, 9, 2, 5, 3, 7, 101, 18, 9, 8])

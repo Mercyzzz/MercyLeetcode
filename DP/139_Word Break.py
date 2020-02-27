@@ -13,8 +13,26 @@ class Solution(object):
                 if dp[j] and s[j:i + 1] in wordDict:
                     dp[i + 1] = True
                     break
-        print dp
         return dp[n]
 
+    def wordBreakrec(self, s, wordDict):
+        """
+        :type s: str
+        :type wordDict: List[str]
+        :rtype: bool
+        """
+        return self.dfs(s, wordDict)
 
-print Solution().wordBreak("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab", ["a","aa","aaa","aaaa","aaaaa","aaaaaa","aaaaaaa","aaaaaaaa","aaaaaaaaa","aaaaaaaaaa"])
+    def dfs(self, remain, wordDict):
+        if not remain:
+            return True
+        for word in wordDict:
+            if remain[0:len(word)] != word:
+                continue
+            if self.dfs(remain[len(word):], wordDict):
+                return True
+
+        return False
+
+
+print Solution().wordBreakrec("aaaaaaaab", ["a","aa","aaa","aaaa","aaaaa","aaaaaa","aaaaaaa","aaaaaaaa","aaaaaaaaa","aaaaaaaaaa"])
